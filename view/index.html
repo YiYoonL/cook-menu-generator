@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+        }
+        .meteria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        .cata {
+            min-width: 200px;
+        }
+        h1, h3{
+            margin: 15px;
+        }
+        .wrap{
+            display: flex;
+            gap: 30px;
+        }
+        .wrap>.item {
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            /* gap: 50px; */
+        }
+        .button {
+            position: fixed;
+            top: 500px;
+            left: 300px;
+            height: 50px;
+            width: 100px;
+            text-align: center;
+            line-height: 50px;
+            background-color: aliceblue;
+            box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div class="button" @click="getMenu">GET MENU</div> -->
+        <div class="meteria">
+            <div class="cata">
+                <h1>蔬菜</h1>
+                <ul>
+                    <!-- {{vegeObj}} -->
+                    <li
+                        v-for="item in vegeMainTitle"
+                        :key="item"
+                    >
+                        <h3>{{item.name}}</h3>
+                        <div class="wrap">
+                            <div
+                                v-for="tagObj in item.content"
+                                :key="tagObj.tag"
+                                class="item"
+                            >
+                                <h5>{{tagObj.name}}</h5>
+                                <div
+                                    v-for="child in tagObj.children"
+                                >
+                                    <div>{{child.name}}</div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="cata">
+                <h1>蛋白质</h1>
+                <ul>
+                    <!-- {{vegeObj}} -->
+                    <li
+                        v-for="item in protMainTitle"
+                        :key="item"
+                    >
+                        <h3>{{item.name}}</h3>
+                        <div class="wrap">
+                            <div
+                                v-for="tagObj in item.content"
+                                :key="tagObj.tag"
+                                class="item"
+                            >
+                                <h5>{{tagObj.name}}</h5>
+                                <div
+                                    v-for="child in tagObj.children"
+                                >
+                                    <div>{{child.name}}</div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="cata">
+                <h1>碳水</h1>
+                <ul>
+                    <!-- {{vegeObj}} -->
+                    <li
+                        v-for="item in carbMainTitle"
+                        :key="item"
+                    >
+                        <h3>{{item.name}}</h3>
+                        <div class="wrap">
+                            <div
+                                v-for="tagObj in item.content"
+                                :key="tagObj.tag"
+                                class="item"
+                            >
+                                <h5>{{tagObj.name}}</h5>
+                                <div
+                                    v-for="child in tagObj.children"
+                                >
+                                    <div>{{child.name}}</div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="day"
+                v-for="daymenu in weekArr"
+                :key="daymenu.day"
+            >
+                <h1>{{daymenu.day}}</h1>
+                <div class="lunch">
+                    <h3>午餐</h3>
+                    
+                    <div
+                        v-for="vege in daymenu.lunch"
+                        :key="vege.name"
+                    >
+                        {{vege.name}}
+                    </div>
+                </div>
+                <div class="dinner">
+                    <h3>晚餐</h3>
+                    <div
+                        v-for="vege in daymenu.dinner"
+                        :key="vege.name"
+                    >
+                        {{vege.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./src/index.js"></script>
+</body>
+</html>
